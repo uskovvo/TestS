@@ -2,11 +2,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Employee {
     @Getter
     private static final List<Employee> employeeList = new ArrayList<>();
+    @Getter
+    private static final HashMap<String, Long> mapEmployee = new HashMap<>();
 
     @Getter @Setter
     private String name;
@@ -66,6 +69,8 @@ public class Employee {
     }
 
     public void addEmployee(Employee employee){
+        String fullNameEmployee = surname + " " + name;
+        mapEmployee.put(fullNameEmployee, salary);
         employeeList.add(employee);
         System.out.println("Сотрудник добавлен");
     }
